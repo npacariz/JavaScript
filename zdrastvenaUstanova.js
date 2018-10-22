@@ -1,5 +1,3 @@
-console.log("test");
-
 let docMilan = new Doktor("Milan", "Milankovic", "srce");
 let docDjura = new Doktor("Djura", "Djuric", "koza");
 let pacDragan = new Pacijent("Dragan", "Draganic", 2343334, 1);
