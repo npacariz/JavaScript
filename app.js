@@ -16,10 +16,8 @@ function Person(firstName, lastName, gender) {
   this.gender = gender;
 }
 
-Person.prototype = {
-  fullName: function() {
-    return `${this.firstName} ${this.lastName}`;
-  }
+Person.prototype.fullName = function() {
+  return `${this.firstName} ${this.lastName}`;
 };
 
 // Staticka metoda i staticki atribut, se ne nasledjuje se,  ostaje sa clasom ako sam dobro skontao
@@ -38,11 +36,9 @@ function Man(firstName, lastName, gender, address) {
 Man.prototype = Object.create(Person.prototype);
 Man.prototype.constructor = Man;
 
-// Extending the Parent's metoda
+// Extending the Parent's method
 Man.prototype.addressAndName = function() {
-  return `${Person.prototype.fullName.call(this)} zivi na adresi ${
-    this.address
-  }`;
+  return `${this.fullName()} zivi na adresi ${this.address}`;
 };
 
 // Stablo nasledjivanja, ne zaboravi this u Parent.call()
