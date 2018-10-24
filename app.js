@@ -22,21 +22,39 @@ Person.prototype = {
   }
 };
 
-// Staticka metoda i staticka klasa ne nasledjuje se ostaje sa clasom ako sam dobro skontao
+// Staticka metoda i staticki atribut, se ne nasledjuje se,  ostaje sa clasom ako sam dobro skontao
 Person.test = "ovo pripada klasi";
 Person.run = function() {
   return `is runing`;
 };
 
-function Man(firstName, lastName, gender) {
+// Dobavljanje roditeljski atributa
+function Man(firstName, lastName, gender, address) {
   Person.call(this, firstName, lastName, gender);
+  this.address = address;
 }
+
+//Nasledjivanje roditeljski metoda
 Man.prototype = Object.create(Person.prototype);
+Man.prototype.constructor = Man;
 
-var covek = new Person("Marko", "Markovic", "musko");
-var covek2 = new Man("Stefan", "Stefanovic", "musko");
+// Extending the Parent's metoda
+Man.prototype.addressAndName = function() {
+  return `${Person.prototype.fullName.call(this)} zivi na adresi ${
+    this.address
+  }`;
+};
 
-console.log(covek2.fullName());
+// Stablo nasledjivanja, ne zaboravi this u Parent.call()
+function Dete(firstName, lastName, gender, address) {
+  Man.call(this, firstName, lastName, gender, address);
+}
+// Nasledjivanje funkcija od roditelja
+Dete.prototype = Object.create(Man.prototype);
+Dete.prototype.constructor = Dete;
+
+var ucenik = new Dete("Stefan", "Stefanovic", "musko", "Cara Lazara");
+console.log(ucenik.addressAndName());
 
 //Promisi
 
