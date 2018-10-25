@@ -53,7 +53,6 @@ var ucenik = new Dete("Stefan", "Stefanovic", "musko", "Cara Lazara");
 console.log(ucenik.addressAndName());
 
 //Promisi
-
 var promise = new Promise((resolve, reject, vrednost) => {
   setTimeout(function() {
     if (true) {
@@ -64,21 +63,21 @@ var promise = new Promise((resolve, reject, vrednost) => {
   }, 3000);
 });
 
-promise
-  .then(response => {
-    console.log(response);
-  })
-  .catch(error => {
-    console.log(error);
-  });
+// promise
+//   .then(response => {
+//     console.log(response);
+//   })
+//   .catch(error => {
+//     console.log(error);
+//   });
 
-console.log("Pozvano posle promisa");
+// console.log("Pozvano posle promisa");
 
-function doHomework(subject, callback) {
-  console.log(`Starting my ${subject} homework`);
-  callback();
-}
+// function doHomework(subject, callback) {
+//   console.log(`Starting my ${subject} homework`);
+//   callback();
+// }
 
-doHomework("eng", function() {
-  console.log("all done");
-});
+// doHomework("eng", function() {
+//   console.log("all done");
+// });
